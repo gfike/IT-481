@@ -1,14 +1,8 @@
 <?php
-
-$serverName = "DESKTOP-FIO8IDL\SQLEXPRESS";
-
-$connectionOptions = array("Database"=>"Northwind");
-
-$conn = sqlsrv_connect( $serverName, $connectionOptions);
-
-if( $conn === false )
-
-die( FormatErrors( sqlsrv_errors() ) );
-
+$mysqli = new mysqli("localhost:8889", "northwind", "password", "northwind");
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+echo $mysqli->host_info . "\n";
 
 ?>
