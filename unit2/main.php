@@ -22,8 +22,8 @@ return $custCount;
 }
 
 function getCustNames($mysqli) {
-    $query = "SELECT CompanyName FROM customers;";
-    $query .= "SELECT ContactName FROM customers;";
+    $query = "SELECT CompanyName FROM customers ORDER BY CustomerID ASC;";
+    $query .= "SELECT ContactName FROM customers ORDER BY CustomerID ASC;";
     $names = [];
 if ($mysqli -> multi_query($query)) {
   do {
@@ -42,11 +42,26 @@ if ($mysqli -> multi_query($query)) {
 return $names;
 }
 
-echo "Total number of customers: ".getCustCount($mysqli);
+echo "Total number of customers: ".getCustCount($mysqli)."<hr/>";
 
 $names = getCustNames($mysqli);
 
-// echo var_dump($names[1]);
+$companyNames = $names[0];
+$contactNames = $names[1];
+
+echo "Companies:<ol>";
+
+foreach($companyNames as &$name){
+    echo "<li>".$name."</li>";
+}
+
+echo "</ol></hr>Contact for Company:<ol>";
+
+foreach($contactNames as &$name){
+    echo "<li>".$name."</li>";
+}
+
+echo "</ol>";
 
 $mysqli->close();
 ?>
