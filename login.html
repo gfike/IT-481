@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" lang="eng">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- <script type="text/javascript" src="login.js"></script> -->
+</head>
+
+<body>
+    <form name="loginForm" id="loginForm" method="POST" action="/tableSelector" class="form-inline">
+            <div class="form-group">
+                <label htmlfor="server">Server: </label>
+                <input type="text" name="server" id="server" />
+            </div>
+            <div class="form-group">
+                <label htmlfor="db">Database: </label>
+                <input type="text" name="db" id="db" />
+            </div>
+            <div class="form-group">
+                <label htmlfor="user">Username: </label>
+                <input type="text" name="user" id="user" />
+            </div>
+            <div class="form-group">
+                <label htmlfor="pwd">Password: </label>
+                <input type="password" id="pwd" name="pwd" />
+            </div>
+            <input type="submit" id="login" name="login" value="Log In"/>
+    </form>
+</body>
+
+</html>
