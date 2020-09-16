@@ -2,23 +2,23 @@ CREATE ROLE "SalesRole";
 CREATE ROLE "HRRole";
 CREATE ROLE "CEORole";
 
-GRANT SELECT ON orders TO "SalesRole";
-GRANT SELECT ON custoemrs TO "SalesRole";
-GRANT SELECT ON employees TO "HRRole" ;
-GRANT SELECT ON Orders TO "CEORole" ;
-GRANT SELECT ON Customers TO "CEORole" ;
-GRANT SELECT ON employees TO "CEORole" ;
+GRANT SELECT ON northwind.orders TO "SalesRole" @"localhost";
+GRANT SELECT ON northwind.custoemrs TO "SalesRole" @"localhost";
+GRANT SELECT ON northwind.employees TO "HRRole" @"localhost";
+GRANT SELECT ON northwind.Orders TO "CEORole" @"localhost";
+GRANT SELECT ON northwind.Customers TO "CEORole" @"localhost";
+GRANT SELECT ON northwind.employees TO "CEORole" @"localhost";
 
-CREATE USER "User_CEO";
-CREATE USER "User_HR";
-CREATE USER "User_Sales";
+CREATE USER "User_CEO"@"localhost" IDENTIFIED BY "password";
+CREATE USER "User_HR"@"localhost" IDENTIFIED BY "password";
+CREATE USER "User_Sales"@"localhost" IDENTIFIED BY "password";
 
-alter user User_CEO IDENTIFIED BY "password";
-alter user User_HR IDENTIFIED BY "password";
-alter user User_Sales IDENTIFIED BY "password";
+-- ALTER USER User_CEO@'localhost' IDENTIFIED BY 'New-Password-Here';
+-- alter user User_CEO @ 'localhost' IDENTIFIED BY "password";
+-- alter user User_HR IDENTIFIED BY "password";
+-- alter user User_Sales IDENTIFIED BY "password";
 
-GRANT CEORole to User_CEO;
+GRANT "CEORole" to "User_CEO"@"localhost";
 GRANT HRRole to User_HR;
 GRANT SalesRole to User_Sales;
 
--- https://www.tutorialspoint.com/error-1396-hy000-operation-create-user-failed-for-root-localhost#:~:text=in%20JavaScript%20work%3F-,ERROR%201396%20(HY000)%3A%20Operation%20CREATE%20USER%20failed%20for,root'%40'localhost'%3F&text=In%20the%20system%2C%20the%20root,result%20in%20the%20ERROR%201396.https://www.tutorialspoint.com/error-1396-hy000-operation-create-user-failed-for-root-localhost#:~:text=in%20JavaScript%20work%3F-,ERROR%201396%20(HY000)%3A%20Operation%20CREATE%20USER%20failed%20for,root'%40'localhost'%3F&text=In%20the%20system%2C%20the%20root,result%20in%20the%20ERROR%201396.
