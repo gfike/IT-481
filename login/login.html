@@ -1,16 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
-
-<head>
-    <meta charset="UTF-8" lang="eng">
-    <title>Log In</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    <head>
+        <meta charset="UTF-8" lang="en">
+        <title>IT 481 Unit 3 Fike</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <!-- <script type="text/javascript" src="login.js"></script> -->
-</head>
-
-<body>
-    <form name="loginForm" id="loginForm" method="POST" class="form-inline">
+    </head>
+    <body>
+        <form method="POST" action="login.php">
             <div class="form-group">
                 <label htmlfor="server">Server: </label>
                 <input type="text" name="server" id="server" />
@@ -28,7 +25,6 @@
                 <input type="password" id="pwd" name="pwd" />
             </div>
             <input type="submit" id="login" name="login" value="Log In"/>
-    </form>
-</body>
-
+        </form>
+    </body>
 </html>

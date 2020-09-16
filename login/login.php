@@ -1,5 +1,13 @@
 <?php
-$mysqli = new mysqli("<localhost:80></localhost:80>81", "northwind", "password", "northwind");
+
+// "localhost:8889"
+
+$server = $_POST["server"];
+$db = $_POST["db"];
+$user = $_POST["user"];
+$pwd = $_POST["pwd"];
+
+$mysqli = new mysqli($server, $user, $pwd, $db);
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
@@ -11,6 +19,7 @@ if (mysqli_connect_errno()) {
 }
 
 function getCustCount($mysqli) {
+  $custCount = "";
     $query = "SELECT DISTINCT COUNT(CustomerID) FROM customers";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
