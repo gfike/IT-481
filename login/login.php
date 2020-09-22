@@ -20,8 +20,8 @@ if (mysqli_connect_errno()) {
 } catch (Exception $e) {
     echo $e->getMessage()."\n";
 }
- echo "Welcome!";
-
-// header("Location: ../tableSelector/tableSelector.html");
+$val = "testing testing 1 2 3";
+setCookie("testCookie", $val);
+header("Location: ../tableSelector/tableSelector.html");
 
 ?>
