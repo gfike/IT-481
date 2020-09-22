@@ -1,5 +1,34 @@
 <?php
 
+// below will display column names in each iteration
+// function displayAllTables($user, $mysqli)
+// {
+//     echo "<b>Username</b>: " . $user . "<br>";
+//     // Gather all table names into an array.
+
+//     $query = "SHOW TABLES";
+
+//     $result = $mysqli->query($query);
+//     $tables = $result->fetch_all();
+//     // Step through the array, only accessing the first element (the table name)
+//     // and gather the column names in each table.
+//     foreach ($tables as $table) {
+
+//         echo "<h2>" . $table[0] . "</h2>";
+//         $rowCount = getRecordCount($mysqli, $table[0]);
+//         echo "<b>Number of Records: </b>".$rowCount."<br/>";
+
+//         $query = "DESCRIBE " . $table[0];
+//         $result = $mysqli->query($query);
+
+//         $columns = $result->fetch_all();
+
+//         foreach ($columns as $column) {
+//             echo $column[0] . "<br />";
+//         }
+//     }
+// }
+
 // below is good for binding one array of reults to a variable
 // function getCustNames($mysqli) {
 //     $query = "SELECT CompanyName, ContactName FROM customers";
