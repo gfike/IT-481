@@ -5,17 +5,18 @@
         <title>IT 481 Unit 3 Fike</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script type="text/javascript" src="./login.js"></script>
     </head>
     <body>
-        <form method="POST" action="login.php">
-            <div class="form-group">
+        <form method="POST">
+            <!-- <div class="form-group">
                 <label htmlfor="server">Server: </label>
                 <input type="text" name="server" id="server" />
             </div>
             <div class="form-group">
                 <label htmlfor="db">Database: </label>
                 <input type="text" name="db" id="db" />
-            </div>
+            </div> -->
             <div class="form-group">
                 <label htmlfor="user">Username: </label>
                 <input type="text" name="user" id="user" />
@@ -24,7 +25,7 @@
                 <label htmlfor="pwd">Password: </label>
                 <input type="password" id="pwd" name="pwd" />
             </div>
-            <input class="btn btn-primary" type="submit" id="login" name="login" value="Log In"/>
+            <input class="btn btn-primary" type="submit" id="login" name="login" value="Log In" onsubmit="login()"/>
         </form>
     </body>
 </html>
