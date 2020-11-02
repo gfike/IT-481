@@ -6,24 +6,15 @@ function login() {
         document.getElementById("errorMsg").innerHTML = "One or more fields are inccorect";
         document.getElementById("user") = "";
     } else {
-        var data = new FormData();
-        data.append('user', document.getElementById("user").value);
-        data.append('pwd', document.getElementById("pwd").value);
-
-        // AJAX CALL
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', "1b-ajax.php");
-        xhr.onload = function () {
-            // console.log(this.response);
-            if (this.response == "OK") {
-                document.createElement("div");
-                document.getElementsByTagName("div").innerHTML += this.response;
-            } else {
-                alert(this.response);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("response").innerHTML = this.responseText;
             }
         };
-        xhr.send(data);
-        return false;
+        // xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.send();
     }
 }
 
