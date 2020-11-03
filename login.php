@@ -19,25 +19,25 @@ try {
     if ($mysqli->connect_errno) {
         // echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 
-        $plaintext = $mysqli->connect_errno;
-        $cipher = "aes-128-gcm";
-        $key = 123456;
-        if (in_array($cipher, openssl_get_cipher_methods())) {
-            $ivlen = openssl_cipher_iv_length($cipher);
-            $iv = openssl_random_pseudo_bytes($ivlen);
-            $ciphertext = openssl_encrypt($plaintext, $cipher, $key, $options = 0, $iv, $tag);
-            $file = fopen("data.txt", 'w');
-            fwrite($file, $ciphertext);
-            fclose($file);
-        }
+        // $plaintext = $mysqli->connect_errno;
+        // $cipher = "aes-128-gcm";
+        // $key = 123456;
+        // if (in_array($cipher, openssl_get_cipher_methods())) {
+        //     $ivlen = openssl_cipher_iv_length($cipher);
+        //     $iv = openssl_random_pseudo_bytes($ivlen);
+        //     $ciphertext = openssl_encrypt($plaintext, $cipher, $key, $options = 0, $iv, $tag);
+        //     $file = fopen("data.txt", 'w');
+        //     fwrite($file, $ciphertext);
+        //     fclose($file);
+        // }
     }
     if (mysqli_connect_errno()) {
         exit();
     }
 } catch (Exception $e) {
-    $file = fopen("data.txt", 'w');
-    fwrite($file, $e->getMessage());
-    fclose($file);
+    // $file = fopen("data.txt", 'w');
+    // fwrite($file, $e->getMessage());
+    // fclose($file);
 }
 
 function displayAllTables($user, $mysqli)
