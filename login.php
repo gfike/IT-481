@@ -1,20 +1,44 @@
 <?php
 $user = $_POST["user"];
 $pwd = $_POST["pwd"];
+
+$validUsers = file("valid-usernames.txt", FILE_IGNORE_NEW_LINES);
+
+// echo gettype($validUsers);
+
+if (key_exists($user, $validUsers) && !isDefaultPwd($pwd)) {
+    displayAllTables($user, $mysqli);
+}
+
+if (!key_exists($user, $validUsers) || isDefaultPwd($pwd)) {
+    echo "Invalid login credentials. Speak with admin for more details.";
+}
+
 try {
     $mysqli = new mysqli("localhost:3307", $user, $pwd, "northwind");
     if ($mysqli->connect_errno) {
-        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        // echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+
+        $plaintext = $mysqli->connect_errno;
+        $cipher = "aes-128-gcm";
+        $key = 123456;
+        if (in_array($cipher, openssl_get_cipher_methods())) {
+            $ivlen = openssl_cipher_iv_length($cipher);
+            $iv = openssl_random_pseudo_bytes($ivlen);
+            $ciphertext = openssl_encrypt($plaintext, $cipher, $key, $options = 0, $iv, $tag);
+            $file = fopen("data.txt", 'w');
+            fwrite($file, $ciphertext);
+            fclose($file);
+        }
     }
     if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
 } catch (Exception $e) {
-    echo $e->getMessage() . "<br>";
+    $file = fopen("data.txt", 'w');
+    fwrite($file, $e->getMessage());
+    fclose($file);
 }
-
-displayAllTables($user, $mysqli);
 
 function displayAllTables($user, $mysqli)
 {
@@ -47,6 +71,15 @@ function getRecordCount($mysqli, $tableName)
         $result->close();
     }
     return $row_count;
+}
+
+function isDefaultPwd($pwd)
+{
+    if ($pwd == "password") {
+        return true;
+    }
+
+    return false;
 }
 
 
